@@ -1,15 +1,20 @@
 package com.springpal.retail.web;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import com.springpal.retail.domain.service.InventoriesService;
+import org.springframework.web.bind.annotation.*;
 
-@RestController("/inventories")
+@RestController
+@RequestMapping("/retail-inventories")
 public class InventoryController {
-//    @GetMapping
-//    public ResponseBody getInventoriesList(RequestParam int page){
-//
-//    }
+
+    private final InventoriesService inventoriesService;
+    private InventoryController(InventoriesService inventoriesService){
+        this.inventoriesService=inventoriesService;
+    }
+    @GetMapping("/inventories")
+    public String getInventoriesList(@RequestParam(name="page", defaultValue = "10") int pageNo){
+        inventoriesService.getListOfInventories(pageNo);
+        return "hi";
+    }
 
 }
