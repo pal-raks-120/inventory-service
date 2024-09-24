@@ -1,8 +1,8 @@
 create sequence pro_id_seq start with 1 increment by 50;
 
-create table pros
+create table products
 (
-    id bigint default nextval('pro_id_seq') not null,
+    id bigint not null,
     code        text not null unique,
     name        text not null,
     description text,
