@@ -33,11 +33,10 @@ class InventoryController {
     @GetMapping("/{code}")
     ResponseEntity<Product> getProductByCode(@PathVariable String code) {
         log.info("Fetching product for code: {}", code);
-        return null;
-//        return inventoriesService
-//                .getProductByCode(code)
-//                .map(ResponseEntity::ok);
-                //.orElseThrow(() -> ProductNotFoundException.forCode(code));
+        return inventoriesService
+                .getProductByCode(code)
+                .map(ResponseEntity::ok)
+                .orElseThrow(() -> ProductNotFoundException.forCode(code));
     }
 
 }
