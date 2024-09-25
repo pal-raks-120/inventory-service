@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
 <artifactId>slf4j-api</artifactId>
 <version>1.7.26</version>
 </dependency>*/
-public class InventoryController {
+class InventoryController {
     private static final Logger log = LoggerFactory.getLogger(InventoryController.class);
     private final InventoriesService inventoriesService;
     private InventoryController(InventoriesService inventoriesService){
@@ -30,13 +30,14 @@ public class InventoryController {
         return inventoriesService.getListOfInventories(pageNo);
     }
 
-//    @GetMapping("/{code}")
-//    ResponseEntity<Product> getProductByCode(@PathVariable String code) {
-//        log.info("Fetching product for code: {}", code);
+    @GetMapping("/{code}")
+    ResponseEntity<Product> getProductByCode(@PathVariable String code) {
+        log.info("Fetching product for code: {}", code);
+        return null;
 //        return inventoriesService
 //                .getProductByCode(code)
-//                .map(ResponseEntity::ok)
-//                .orElseThrow(() -> ProductNotFoundException.forCode(code));
-//    }
+//                .map(ResponseEntity::ok);
+                //.orElseThrow(() -> ProductNotFoundException.forCode(code));
+    }
 
 }
