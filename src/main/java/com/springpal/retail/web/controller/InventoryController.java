@@ -1,17 +1,22 @@
 package com.springpal.retail.web.controller;
 
 import com.springpal.retail.common.PagedResult;
-import com.springpal.retail.domain.dto.Product;
+import com.springpal.retail.domain.mapper.ProductMapper;
+import com.springpal.retail.domain.objects.CreateProductRequest;
+import com.springpal.retail.domain.objects.CreateProductResponse;
+import com.springpal.retail.domain.objects.Product;
 import com.springpal.retail.domain.service.InventoriesService;
 //import lombok.extern.slf4j.Slf4j;
 import com.springpal.retail.web.exception.ProductNotFoundException;
+import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/retail-inventories")
+@RequestMapping("/api/inventories")
 //@Slf4j->this needs extra dependancy which lombok won't dowload autoatically,so choose org.slf4j
 /*<dependency>
 <groupId>org.slf4j</groupId>
@@ -24,7 +29,7 @@ class InventoryController {
     private InventoryController(InventoriesService inventoriesService){
         this.inventoriesService=inventoriesService;
     }
-    @GetMapping("/inventories")
+    @GetMapping
     public PagedResult<Product> getInventoriesList(@RequestParam(name="page", defaultValue = "10") int pageNo){
         log.info("Fetching products for page: {}", pageNo);
         return inventoriesService.getListOfInventories(pageNo);
@@ -39,4 +44,11 @@ class InventoryController {
                 .orElseThrow(() -> ProductNotFoundException.forCode(code));
     }
 
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    CreateProductResponse addProductForInvetory(@Valid @RequestBody CreateProductRequest productRequest) {
+        log.info("Creating product: {}", productRequest);
+        //TODO: Write mapper to change request to Product in ProductMapper.
+        return inventoriesService.createProduct(productRequest);
+    }
 }

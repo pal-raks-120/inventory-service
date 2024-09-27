@@ -3,10 +3,11 @@ package com.springpal.retail.domain.service;
 
 import com.springpal.retail.common.ApplicationProperties;
 import com.springpal.retail.common.PagedResult;
-import com.springpal.retail.domain.dto.Product;
+import com.springpal.retail.domain.objects.CreateProductRequest;
+import com.springpal.retail.domain.objects.CreateProductResponse;
+import com.springpal.retail.domain.objects.Product;
 import com.springpal.retail.domain.mapper.ProductMapper;
 import com.springpal.retail.domain.repo.ProductRepository;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -44,5 +45,13 @@ class InventoriesServiceImpl implements InventoriesService {
 
     public Optional<Product> getProductByCode(String code) {
         return productRepository.findByCode(code).map(ProductMapper::toProduct);
+    }
+    @Override
+    public CreateProductResponse createProduct(CreateProductRequest productRequest) {
+       // productValidator.validate(request);
+       // ProductEntity newProduct = ProductMapper.convertToEntity(request);
+       //TODO:Change product to productEntity productRepository.save(request);
+        return null;
+                //new CreateOrderResponse(savedProduct.getCode());->since small project returning response directly here instead of creating another mapper method
     }
 }

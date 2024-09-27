@@ -1,6 +1,6 @@
 package com.springpal.retail.domain.mapper;
 
-import com.springpal.retail.domain.dto.Product;
+import com.springpal.retail.domain.objects.Product;
 import com.springpal.retail.domain.repo.ProductEntity;
 
 public class ProductMapper {

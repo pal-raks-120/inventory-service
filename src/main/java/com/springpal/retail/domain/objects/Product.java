@@ -1,4 +1,4 @@
-package com.springpal.retail.domain.dto;
+package com.springpal.retail.domain.objects;
 
 import java.math.BigDecimal;
 
