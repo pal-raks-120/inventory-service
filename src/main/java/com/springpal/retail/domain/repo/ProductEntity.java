@@ -17,7 +17,7 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 public class ProductEntity {
     @Id()
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)//GenerationType.Auto for hibernate validation will asks for seq say like here product_seq in fluway db migration so this change is done
     private Long productId;
 
     @Column(nullable = false,unique = true)
@@ -30,6 +30,7 @@ public class ProductEntity {
 
     private String description;
 
+  //  @Column(name="image_url") no need to provide as hibernate automatically take care of it
     private String imageUrl;
 
     @NotNull(message = "Product price is required")
