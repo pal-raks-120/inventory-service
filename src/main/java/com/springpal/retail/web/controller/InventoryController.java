@@ -48,7 +48,7 @@ class InventoryController {
     @ResponseStatus(HttpStatus.CREATED)
     CreateProductResponse addProductForInvetory(@Valid @RequestBody CreateProductRequest productRequest) {
         log.info("Creating product: {}", productRequest);
-        //TODO: Write mapper to change request to Product in ProductMapper.
-        return inventoriesService.createProduct(productRequest);
+       Product product= ProductMapper.toProductFromRequest(productRequest);
+        return inventoriesService.createProduct(product);
     }
 }

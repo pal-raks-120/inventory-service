@@ -10,5 +10,5 @@ import java.util.Optional;
 public interface InventoriesService {
     PagedResult<Product> getListOfInventories(int page);
     Optional<Product> getProductByCode(String code);
-    CreateProductResponse createProduct(CreateProductRequest productRequest);
+    CreateProductResponse createProduct(Product product);
 }
