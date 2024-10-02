@@ -10,5 +10,5 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 @Builder*/
 //Current scenario as adding code in request so no need to builder
-@Getter
-public record Product(String code, String name, String description, String imageUrl, BigDecimal price) {}
+
+public record Product(@Getter String code,@Getter String name,@Getter String description,@Getter String imageUrl,@Getter BigDecimal price) {}

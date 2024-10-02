@@ -17,7 +17,10 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 public class ProductEntity {
     @Id()
-    @GeneratedValue(strategy = GenerationType.IDENTITY)//GenerationType.Auto for hibernate validation will asks for seq say like here product_seq in fluway db migration so this change is done
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "product_id_generator")
+    @SequenceGenerator(name="product_id_generator", sequenceName = "product_id_seq")
+    //GenerationType.Auto for hibernate validation will asks for seq say like here product_seq in flyway db migration so this change is done
+   //GenerationType.IDENTITY Needs to add specific seq also it's not support oracle db so it's better to use  GenerationType.SEQUENCE
     private Long productId;
 
     @Column(nullable = false,unique = true)

@@ -28,6 +28,7 @@ public class ProductMapper {
 
     public static ProductEntity convertToEntity(Product product){
         ProductEntity productEntity= new ProductEntity();
+        productEntity.setCode(product.code());
         productEntity.setName(product.getName());
         productEntity.setDescription(product.getDescription());
         productEntity.setImageUrl(product.getImageUrl());

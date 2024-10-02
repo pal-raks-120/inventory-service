@@ -8,12 +8,12 @@ import lombok.Getter;
 import org.springframework.format.annotation.NumberFormat;
 
 import java.math.BigDecimal;
-@Getter
+
 public record CreateProductRequest(
-        @Valid  @NotBlank(message = "Product code is required") String code,
-        @Valid  @NotBlank(message = "Product name is required") String name,
-        @Valid  @NotBlank(message = "Product description is required") String description,
-        String imageUrl,
+        @Getter @Valid  @NotBlank(message = "Product code is required") String code,
+        @Getter @Valid  @NotBlank(message = "Product name is required") String name,
+        @Getter @Valid  @NotBlank(message = "Product description is required") String description,
+        @Getter String imageUrl,
         @DecimalMin(value = "0.0", inclusive = false)
         @NumberFormat(style = NumberFormat.Style.CURRENCY)
-        BigDecimal price) {}
+        @Getter BigDecimal price) {}

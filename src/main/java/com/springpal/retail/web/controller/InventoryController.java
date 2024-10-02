@@ -30,7 +30,7 @@ class InventoryController {
         this.inventoriesService=inventoriesService;
     }
     @GetMapping
-    public PagedResult<Product> getInventoriesList(@RequestParam(name="page", defaultValue = "10") int pageNo){
+    public PagedResult<Product> getInventoriesList(@RequestParam(name="page", defaultValue = "1") int pageNo){
         log.info("Fetching products for page: {}", pageNo);
         return inventoriesService.getListOfInventories(pageNo);
     }
