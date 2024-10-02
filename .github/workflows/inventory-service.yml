@@ -38,4 +38,4 @@ jobs:
          docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
          ./mvnw spring-boot:build-image -DskipTests
           echo "Pushing the image to Docker Hub..."
-           docker push ${{ secrets.DOCKER_USERNAME }}/inventory
+          docker push ${{ secrets.DOCKER_USERNAME }}/inventory
