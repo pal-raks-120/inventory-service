@@ -32,6 +32,7 @@
 		<maven.compiler.source>${java.version}</maven.compiler.source>
 		<maven.compiler.target>${java.version}</maven.compiler.target>
 		<springdoc-openapi.version>2.6.0</springdoc-openapi.version>
+		<dockerImageName>palraks/inventory</dockerImageName>
 		<!--<app.profiles>local,dev</app.profiles>-->
 	</properties>
 	<dependencies>
@@ -121,7 +122,12 @@
 					</execution>
 				</executions>
 				<configuration>
+
 					<!--<profiles>${app.profiles}</profiles>if you want profile specific aven build-->
+					<image>
+						<name>${dockerImageName}</name>
+						<pullPolicy>IF_NOT_PRESENT</pullPolicy>
+					</image>
 					<excludes>
 						<exclude>
 							<groupId>org.projectlombok</groupId>
